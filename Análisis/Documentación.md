@@ -24,17 +24,17 @@ Para el desarrollo del sistema se emplearán 4 lenguajes de programación, cada 
 **Luego definimos dos reglas para grupos de turistas distintos, grupo_turista5 para grupos de maximo 5 turistas y grupo_turistas10 para geupos de maximo 10 turistas. En ambas se diferenciaran los turistas por su DNI (ya que puede haber nombre repetidos pero el DNI es unico), de modo que no haya turistas repetidos en distintos grupos.**
 
 **Definimos el hecho transporte que tendra como parametros los tipos de transporte donde viajaran los grupos de turistas:**
--*Camioneta.*
--*Bus pequeño.*
+- *Camioneta.*
+- *Bus pequeño.*
 
 **Despues definimos el tipo de destino que puede ser:**
--*Cultural.*
--*De naturaleza/aire libre.*
+- *Cultural.*
+- *De naturaleza/aire libre.*
 
 **Con esa logica definimos el hecho destinos que tendra de argumentos el nombre de el destino, el tiempo limite (que es una constante de 50 minutos por grupo en cada destino), tipo de destino antes definido, y creamoa manualmente tres destinos:**
--*Parque Nacional El Picacho (naturaleza/aire libre).*
--*Basilica de Suyapa(cultural)*
--*Cerro Juana Lainez(naturaleza/aire libre).*
+- *Parque Nacional El Picacho (naturaleza/aire libre).*
+- *Basilica de Suyapa(cultural)*
+- *Cerro Juana Lainez(naturaleza/aire libre).*
 
 **Continuamos con el hecho guia, que tendra de argumentos el id del guia, el grupo de turistas que tendra a su cargo y el transporte que utilizaran. Creamos manualmente 4 guias, de los cuales uno tendra un grupo de 10 turistas y viajaran en un bus pequeño y los otros tres tendran un grupo de 5 turistas transportandose en camionetas.**
 
@@ -47,6 +47,3 @@ Para el desarrollo del sistema se emplearán 4 lenguajes de programación, cada 
 **Seguimos definiendo el hecho ruta que contiene un horario por cada visita. Como tenemos 4 grupos y 4 guias, habra 4 visitas, y por lo tanto la ruta recibira como argumentos los horarios correspondientes.**
 
 **Por ultimo, se incluye el hecho estacion, con los argumentos nombre y cada hora.**
-
-rutas(dest1, dest2, dest3, guia, hora_salida)
-
