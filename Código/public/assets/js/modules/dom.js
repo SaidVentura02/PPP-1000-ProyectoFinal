@@ -20,6 +20,7 @@ const init = () => {
 }
 
 const print = text => document.body.innerHTML += text;
+const printAddingNodes = node => document.body.appendChild(node);
 
 export {
     init,
