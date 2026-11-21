@@ -18,7 +18,7 @@ const THEME_CONFIG = {
     },
 };
 
-const FONT = "Tahoma";
+const FONT = "Helvetica";
 
 export {
     THEME_CONFIG,

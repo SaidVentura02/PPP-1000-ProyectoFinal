@@ -24,5 +24,9 @@ const printAddingNodes = node => document.body.appendChild(node);
 
 export {
     init,
-    print
+    print,
+    printAddingNodes,
+    html,
+    theme,
+    actualTheme
 }

@@ -27,7 +27,7 @@ const createDialog = (id, buttonContent, dialogContent, buttonStyle = {}, dialog
     closeButton.setAttribute("popovertargetaction", "hide");
     closeButton.innerText = buttonContent;
     Object.assign(closeButton.style, buttonStyle)
-
+    //Dialog
     const dialog = document.createElement("dialog");
     dialog.id = id;
     if (dialogContent != null) dialog.appendChild(dialogContent);
