@@ -1,13 +1,15 @@
 /* 
-    @author ffloresh@unah.hn
-    @version 0.1.0
-    @date 2026/11/16
+    @author ffloresh@unah.hn, said.ventura@unah.hn
+    @version 0.1.1
+    @date 2026/11/20
+    @since 2026/11/16
 */
 
 import {init, print, printAddingNodes} from "./modules/dom.js";
 import {h1, h2, p} from "./modules/dom-html-basic-elements.js";
 import { createAnchor, createDialog, createElement } from "./modules/dom-html-elements.js"; 
-import {STYLES} from "./modules/nodes-styles.js" 
+import {STYLES} from "./modules/nodes-styles.js";
+import { tableElement, addHeaders, addContent } from "./modules/tables.mjs";
 
 init();
 //Creacion del header
@@ -37,6 +39,15 @@ leftCol.appendChild(mainTitle);
 leftCol.appendChild(touristsTitle);
 leftCol.appendChild(guidesTitle);
 leftCol.appendChild(destinationsTitle);
+
+
+
+tableElement();
+addHeaders(["Nombre", "Edad", "DNI", "Nacionalidad"]);
+addContent(["nombreEj", "edadEj", "dniEj", "nacionEj"]);
+
+
+
 
 //Definicion de elementos para la columna derecha
 //Guarda botones, dialogs y el boton de limpiar base de conocimientos
@@ -83,6 +94,7 @@ footer.appendChild(navFooter);
 printAddingNodes(header);
 printAddingNodes(main);
 printAddingNodes(footer);
+
 
 
 
