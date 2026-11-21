@@ -1,12 +1,26 @@
 import { html, theme, actualTheme } from "./dom.js"
 
 const STYLES = {
-    headerFooter: {
+    body:{
+        position: "relative",
+        minHeight: "100vh",
+        margin: "0",
+        paddingBottom: "86px"
+    },
+    header: {
         backgroundColor: actualTheme["primary-color"],
         height: "70px",
         position: "relative",
         marginBottom: "16px"
-
+    },
+    footer: {
+        backgroundColor: actualTheme["primary-color"],
+        height: "70px",
+        width: "100%",
+        position: "absolute",
+        marginBottom: "16px",
+        bottom: "0",
+        left: "0"
     },
     nav: {
         position: "absolute",
@@ -43,16 +57,47 @@ const STYLES = {
         width: "25%",
         color: actualTheme["background-color"],
         border: "none",
-        cursor: "pointer"
+        cursor: "pointer",
+        borderRadius: "12px"
     },
-    buttonDialog: {
+    button:{
+        padding: "8px",
+        backgroundColor: actualTheme["primary-color"],
+        width: "25%",
+        color: actualTheme["background-color"],
+        border: "none",
+        cursor: "pointer",
+        borderRadius: "12px"
+    },
+    buttonDialogFooter: {
         marginLeft: "16px",
         backgroundColor: "none",
         color: actualTheme["background-color"],
         border: "none",
         cursor: "pointer",
         backgroundColor: actualTheme["primary-color"],
+        fontSize: "24px"
+    },
+    dialog: {
+        width: "90%",
+        maxWidth: "520px",
+        padding: "24px",
+        border: `2px solid ${actualTheme["primary-color"]}`,
+        borderRadius: "12px",
+        backgroundColor: actualTheme["background-color"],
+        color: actualTheme["tertiary-color"]
+    },
+    dialogTitle: {
+        marginTop: "0",
+        paddingBottom: "8px",
+        color: actualTheme["primary-color"],
+        borderBottom: `2px solid ${actualTheme["secondary-color"]}`
+    },
+    dialogText: {
+        fontSize: "16px",
+        lineHeight: "1.6"
     }
+    
 }
 
 export {
