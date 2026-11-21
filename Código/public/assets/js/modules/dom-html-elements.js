@@ -14,7 +14,7 @@ const createElement = (name, content = "", style = {}, action = () => null) => {
     return element;
 }
 
-const createDialog = (id, buttonContent, dialogContent, buttonStyle = {}, dialogStyle = {}) => {
+const createDialog = (id, buttonContent, dialogContent, buttonStyle = {}, dialogStyle = {}, closeButtonStyle = {}) => {
     //Boton de apertura
     const openButton = document.createElement("button");
     openButton.setAttribute("commandfor", id);
@@ -23,17 +23,17 @@ const createDialog = (id, buttonContent, dialogContent, buttonStyle = {}, dialog
     Object.assign(openButton.style, buttonStyle)
     //Boton para cerrar modal
     const closeButton = document.createElement("button");
-    closeButton.setAttribute("popovertarget", id);
-    closeButton.setAttribute("popovertargetaction", "hide");
-    closeButton.innerText = buttonContent;
-    Object.assign(closeButton.style, buttonStyle)
+    closeButton.setAttribute("commandfor", id);
+    closeButton.setAttribute("command", "close");
+    closeButton.innerText = "Cerrar";
+    Object.assign(closeButton.style, closeButtonStyle)
     //Dialog
     const dialog = document.createElement("dialog");
     dialog.id = id;
     if (dialogContent != null) dialog.appendChild(dialogContent);
     Object.assign(dialog.style, dialogStyle);
 
-    return [openButton, dialog]
+    return [openButton, dialog, closeButton]
 }
 
 const createTable = () => null;
