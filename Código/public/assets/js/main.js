@@ -1,5 +1,5 @@
 /* 
-    @author ffloresh@unah.hn, said.ventura@unah.hn
+    @author jose.inestroza@unah.edu.hn ffloresh@unah.hn, said.ventura@unah.hn, iadiazr@unah.hn
     @version 0.1.1
     @date 2026/11/20
     @since 2026/11/16

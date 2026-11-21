@@ -1,3 +1,9 @@
+/* 
+    @author jose.inestroza@unah.edu.hn ffloresh@unah.hn, iadiazr@unah.hn
+    @version 0.1.1
+    @date 2026/11/20
+*/
+
 import { init, printAddingNodes } from "./modules/dom.js";
 import { createAnchor, createDialog, createElement } from "./modules/dom-html-elements.js";
 import { STYLES } from "./modules/nodes-styles.js"

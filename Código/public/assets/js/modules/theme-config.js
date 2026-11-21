@@ -1,7 +1,8 @@
 /* 
     @author jose.inestroza@unah.edu.hn ffloresh@unah.hn
-    @version 0.1.0
-    @date 2026/11/16
+    @version 0.1.1
+    @date 2026/11/20
+    @since 2026/11/16
 */
 const THEME_CONFIG = {
     "light": {

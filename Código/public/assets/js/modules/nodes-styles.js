@@ -1,3 +1,10 @@
+/* 
+    @author ffloresh@unah.hn, said.ventura@unah.hn, iadiazr@unah.hn
+    @version 0.1.1
+    @date 2026/11/20
+    @since 2026/11/19
+*/
+
 import { html, theme, actualTheme } from "./dom.js"
 
 const STYLES = {

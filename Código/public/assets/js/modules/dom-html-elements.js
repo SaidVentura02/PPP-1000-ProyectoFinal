@@ -1,7 +1,7 @@
 /*
-    @author jose.inestroza@unah.edu.hn
-    @version 0.2.0
-    @date 2026/11/19
+    @author jose.inestroza@unah.edu.hn, fflores@unah.hn
+    @version 0.1.1
+    @date 2026/11/20
     @since 2026/11/16
 */
 
