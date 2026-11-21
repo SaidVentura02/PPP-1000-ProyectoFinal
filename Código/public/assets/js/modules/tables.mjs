@@ -5,7 +5,6 @@
 */
 
 import { th, td } from "./dom-html-basic-elements.js";
-import { html } from "./dom.js";
 
 const rowElement = () => document.createElement("tr");
 const insertRowContent = (rowElement, htmlElement) => rowElement.innerHTML+=htmlElement;

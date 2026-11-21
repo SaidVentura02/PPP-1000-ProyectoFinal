@@ -41,13 +41,10 @@ leftCol.appendChild(guidesTitle);
 leftCol.appendChild(destinationsTitle);
 
 
-
+//Generacion de tablas de manera dinamica (prototipo de ejemplo)
 tableElement();
 addHeaders(["Nombre", "Edad", "DNI", "Nacionalidad"]);
 addContent(["nombreEj", "edadEj", "dniEj", "nacionEj"]);
-
-
-
 
 //Definicion de elementos para la columna derecha
 //Guarda botones, dialogs y el boton de limpiar base de conocimientos
