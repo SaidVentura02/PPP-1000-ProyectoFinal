@@ -1,7 +1,7 @@
 /*
 * @author ffloresh@unah.hn, said.ventura@unah.hn
-* @version 0.2.1
-* @date 2026/11/19
+* @version 0.2.2
+* @date 2026/11/20
 * @since 2026/11/14
 * Base de conocimientos para el proyecto
 */
@@ -69,20 +69,8 @@ grupo(grupo_4, X, Y, destino('Antigua Casa Presidencial',_), transporte(camionet
     turista(X,_,_,_,grupo_4),
     guia(Y, grupo_4).
 
-%Definicion de un horario para visita horario(guia, hora_entrada, hora_salida)
-horario('G-01', '7:00 AM', '7:50 AM').
-horario('G-02', '8:00 AM', '8:50 AM').
-horario('G-03', '10:00 AM', '10:50 AM').
-horario('G-04', '11:00 AM', '11:50 AM').
-
-%Definicion de una visita a un destino (horario, destino)
-visita(horario('G-01', '7:00 AM', '7:50 AM'), 'Parque Nacional El Picacho').
-visita(horario('G-02', '8:00 AM', '8:50 AM'), 'Cerro Juana Lainez').
-visita(horario('G-03', '10:00 AM', '10:50 AM'), 'Basilica de Suyapa').
-visita(horario('G-04', '11:00 AM', '11:50 AM'), 'Basilica de Suyapa').
-
-%Definicion de una ruta
-%La ruta necesita un horario por cada visita. Son tres grupos y tres guias, por lo que son tres visitas
-ruta(horario1, horario2, horario3, horario4, horario5, horario6, horario7, horario8, horario9). 
-
-estacion(nombre, cada_hora).
+%Definicion de un horario para visita horario(guia, hora_llegada, hora_salida)
+horario(guia('Juan', grupo_1), '7:00 AM', '7:50 AM').
+horario(guia('Guadalupe', grupo_2), '8:00 AM', '8:50 AM').
+horario(guia('Rodrigo', grupo_3), '10:00 AM', '10:50 AM').
+horario(guia('Antonio', grupo_4), '11:00 AM', '11:50 AM').

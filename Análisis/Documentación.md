@@ -56,6 +56,18 @@ Para el desarrollo del sistema se emplearán 4 lenguajes de programación, cada 
 
 **Por ultimo, se incluye el hecho estacion, con los argumentos nombre y cada hora.**
 
+#### (Modificaciones)
+
+El hecho **turista** ahora posee el argumento ***numero_grupo***, para poder organizar con mayor facilidad todos los registros de turistas en la base de conocimientos.
+
+El hecho **guia** ahora solo posee los argumentos ***nombre*** y ***numero_grupo***.
+
+Se decidio por modificar el hecho **destino**, ahora los argumentos solamente son el nombre del destino y el tipo.
+
+La mayor modificación se encuentra al implementar el hecho **grupo**. En lugar de utilizar varios hechos para formar los grupos, se optó por emplear un solo hecho donde los argumentos son: ***nombre_grupo***, ***guia***, ***turista***, ***destino***, ***transporte***. Tambien se definen las reglas para con las cuales se podra realizar las consultas acerca de los guías y turistas asignados a cada grupo mediante el argumento ***numero_grupo***.
+
+Se modifica el hecho **horario**, ahora sus argumentos son **guia** y tanto la hora de llegada y hora de salida en el destino, la cual se establece que es 50 minutos maximo por cada visita.
+
 # JavaScript
 La primera versión del proyecto incluye programas básicos de funcionamiento con el lenguaje de programación de JavaScript. Estos archivos conforman la base del FrontEnd del proyecto donde se cimentará la interfaz web con la que el usuario interactuará. 
 
@@ -148,9 +160,23 @@ Dependiendo del tema, los colores toman un rol primario, secundario, de fondo o 
 
 Módulo para crear elementos HTML mediante el DOM. Es la base con la que main.js y routes.js construyen la página.
 
+### exports
+dom-html-elements.js exporta:
+- **createElement(name, content, style, action):** Crea un elemento HTML de la etiqueta indicada. Recibe el texto que mostrará, un objeto de estilos y una función opcional que se ejecuta al hacer clic. Devuelve el elemento.
+- **createAnchor(content, url, style):** Crea un enlace `<a>` con el texto, la dirección y los estilos indicados.
+- **createDialog(id, buttonContent, dialogContent, buttonStyle, dialogStyle, closeButtonStyle):** Crea un dialog modal. Devuelve tres elementos: el botón que lo abre, el dialog y el botón de cerrar. El botón de cerrar no se agrega solo: quien llama la función debe agregarlo al dialog. Los botones se conectan al dialog mediante los atributos `commandfor` y `command` (`show-modal` para abrir y `close` para cerrar).
+
 ### tables.mjs
 
 Módulo para crear tablas de manera dinámica. Se usa en la página de Inicio para mostrar los listados de turistas, guías y destinos.
+
+#### (Modifiaciones)
+
+Se sustitye la función anonima almacenada en **tableElement**, por:
+
+> const table = () => `<table border></table>`;
+
+lo cual permite agregar bordes a toda la tabla. La creación de los elementos thead y tbody se trasladan a la las funciones anonimas almacenadas en **addHeaders** y **addContent** respectivamente.
 
 ### imports
 tables.mjs importa `th` y `td` de **dom-html-basic-elements.js**, que generan las celdas de encabezado y de datos.
@@ -164,12 +190,6 @@ tables.mjs exporta:
 Por dentro usa tres funciones de apoyo: `rowElement` crea una fila `tr`, `insertRowContent` agrega una celda a una fila e `insertRow` agrega una fila a la tabla.
 
 Actualmente main.js lo usa como prototipo, con datos de ejemplo.
-
-### exports
-dom-html-elements.js exporta:
-- **createElement(name, content, style, action):** Crea un elemento HTML de la etiqueta indicada. Recibe el texto que mostrará, un objeto de estilos y una función opcional que se ejecuta al hacer clic. Devuelve el elemento.
-- **createAnchor(content, url, style):** Crea un enlace `<a>` con el texto, la dirección y los estilos indicados.
-- **createDialog(id, buttonContent, dialogContent, buttonStyle, dialogStyle, closeButtonStyle):** Crea un dialog modal. Devuelve tres elementos: el botón que lo abre, el dialog y el botón de cerrar. El botón de cerrar no se agrega solo: quien llama la función debe agregarlo al dialog. Los botones se conectan al dialog mediante los atributos `commandfor` y `command` (`show-modal` para abrir y `close` para cerrar).
 
 ### nodes-styles.js
 
