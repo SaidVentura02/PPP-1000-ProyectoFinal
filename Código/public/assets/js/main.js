@@ -9,7 +9,7 @@ import {init, print, printAddingNodes} from "./modules/dom.js";
 import {h1, h2, p} from "./modules/dom-html-basic-elements.js";
 import { createAnchor, createDialog, createElement } from "./modules/dom-html-elements.js"; 
 import {STYLES} from "./modules/nodes-styles.js";
-import { table, addHeaders, addContent } from "./modules/tables.mjs";
+import { tableElement, addHeaders, addContent } from "./modules/tables.mjs";
 
 init(STYLES.body);
 //Creacion del header
@@ -42,7 +42,7 @@ leftCol.appendChild(destinationsTitle);
 
 
 //Generacion de tablas de manera dinamica (prototipo de ejemplo)
-print(table());
+tableElement();
 addHeaders(["Nombre", "Edad", "DNI", "Nacionalidad"]);
 addContent(["nombreEj", "edadEj", "dniEj", "nacionEj"]);
 

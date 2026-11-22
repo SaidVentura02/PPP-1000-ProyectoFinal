@@ -10,28 +10,31 @@ import { th, td } from "./dom-html-basic-elements.js";
 const rowElement = () => document.createElement("tr");
 const insertRowContent = (rowElement, htmlElement) => rowElement.innerHTML+=htmlElement;
 const insertRow = (htmlElement, rowElement) => htmlElement.appendChild(rowElement);
-const table = () => `<table border></table>`;
+
+const tableElement = () => {
+    let table = document.createElement("table");
+    table.appendChild(document.createElement("thead"));
+    table.appendChild(document.createElement("tbody"));
+    table.setAttribute("border", "1");
+    document.body.appendChild(table);
+}
 
 const addHeaders = (elements) => {
-    let table = document.querySelector("table");
-    let header = document.createElement("thead");
+    let header = document.querySelector("thead");
     let row = rowElement();
 
     let h = elements.map((item) => insertRowContent(row, th(item)));
 
     insertRow(header,row);
-    table.appendChild(header);
 }
 
 const addContent = (data) => {
-    let table = document.querySelector("table");
-    let body = document.createElement("tbody");
+    let body = document.querySelector("tbody");
     let row = rowElement();
 
     let d = data.map((item) => insertRowContent(row, td(item)));
 
     insertRow(body,row);
-    table.appendChild(body);
 }
 
-export {table, addHeaders, addContent}
+export {tableElement, addHeaders, addContent}

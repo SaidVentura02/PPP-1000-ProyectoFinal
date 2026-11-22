@@ -172,11 +172,7 @@ Módulo para crear tablas de manera dinámica. Se usa en la página de Inicio pa
 
 #### (Modifiaciones)
 
-Se sustitye la función anonima almacenada en **tableElement**, por:
-
-> const table = () => `<table border></table>`;
-
-lo cual permite agregar bordes a toda la tabla. La creación de los elementos thead y tbody se trasladan a la las funciones anonimas almacenadas en **addHeaders** y **addContent** respectivamente.
+En la función anonima implementada en **tableElement**, se agrega la implementación del atributo **border** para el elemento html tipo tabla.
 
 ### imports
 tables.mjs importa `th` y `td` de **dom-html-basic-elements.js**, que generan las celdas de encabezado y de datos.
