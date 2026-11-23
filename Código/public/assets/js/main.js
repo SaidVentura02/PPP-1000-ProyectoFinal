@@ -1,7 +1,7 @@
 /* 
     @author jose.inestroza@unah.edu.hn ffloresh@unah.hn, said.ventura@unah.hn, iadiazr@unah.hn
-    @version 0.1.1
-    @date 2026/11/20
+    @version 0.1.2
+    @date 2026/11/22
     @since 2026/11/16
 */
 
@@ -10,6 +10,7 @@ import {h1, h2, p} from "./modules/dom-html-basic-elements.js";
 import { createAnchor, createDialog, createElement } from "./modules/dom-html-elements.js"; 
 import {STYLES} from "./modules/nodes-styles.js";
 import { tableElement, addHeaders, addContent } from "./modules/tables.mjs";
+import { getData } from "./modules/fetch.mjs";
 
 init(STYLES.body);
 //Creacion del header
@@ -36,15 +37,40 @@ const touristsTitle = createElement("h2", "Turistas");
 const guidesTitle = createElement("h2", "Guias");
 const destinationsTitle = createElement("h2", "Destinos");
 leftCol.appendChild(mainTitle);
+
+//Se genera las sección de turistas
 leftCol.appendChild(touristsTitle);
+//Creación de la tabla turistas
+const tableTourists = tableElement();
+leftCol.appendChild(tableTourists);
+//Se realiza la peticion para obtener los datos de la tabla turista
+const request = async () =>{
+        const json = await getData("api/tourist-query/");
+        if(json.status){
+            let data = [json.nombre, json.edad, json.dni, json.nacionalidad];
+            addHeaders(tableTourists, ["Nombre", "Edad", "DNI", "Nacionalidad"]);
+            addContent(tableTourists, data);
+        } else{
+            console.log("ERROR");
+        }
+    }
+request();
+
+//Se genera las sección de guias
 leftCol.appendChild(guidesTitle);
+//Creación de la tabla guias
+const tableGuides = tableElement();
+leftCol.appendChild(tableGuides);
+addHeaders(tableGuides, ["Nombre", "Grupo asignado"]);
+addContent(tableGuides, ["nombreEj", "grupo1"]);
+
+//Se genera las sección de destinos
 leftCol.appendChild(destinationsTitle);
-
-
-//Generacion de tablas de manera dinamica (prototipo de ejemplo)
-tableElement();
-addHeaders(["Nombre", "Edad", "DNI", "Nacionalidad"]);
-addContent(["nombreEj", "edadEj", "dniEj", "nacionEj"]);
+//Creacion de la tabla de destinos
+const tableDestinations = tableElement();
+leftCol.appendChild(tableDestinations);
+addHeaders(tableDestinations, ["Destino", "Tipo"]);
+addContent(tableDestinations, ["nombreEj", "cultural"]);
 
 //Definicion de elementos para la columna derecha
 //Guarda botones, dialogs y el boton de limpiar base de conocimientos

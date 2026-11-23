@@ -13,28 +13,29 @@ const insertRow = (htmlElement, rowElement) => htmlElement.appendChild(rowElemen
 
 const tableElement = () => {
     let table = document.createElement("table");
-    table.appendChild(document.createElement("thead"));
-    table.appendChild(document.createElement("tbody"));
     table.setAttribute("border", "1");
-    document.body.appendChild(table);
+    
+    return table;
 }
 
-const addHeaders = (elements) => {
-    let header = document.querySelector("thead");
+const addHeaders = (htmlTable, elements) => {
+    let header = document.createElement("thead");
     let row = rowElement();
 
     let h = elements.map((item) => insertRowContent(row, th(item)));
 
     insertRow(header,row);
+    htmlTable.appendChild(header);
 }
 
-const addContent = (data) => {
-    let body = document.querySelector("tbody");
+const addContent = (htmlTable,data) => {
+    let body = document.createElement("tbody");
     let row = rowElement();
 
     let d = data.map((item) => insertRowContent(row, td(item)));
 
     insertRow(body,row);
+    htmlTable.appendChild(body);
 }
 
 export {tableElement, addHeaders, addContent}

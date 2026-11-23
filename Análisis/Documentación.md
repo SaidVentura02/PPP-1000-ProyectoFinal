@@ -172,14 +172,16 @@ Módulo para crear tablas de manera dinámica. Se usa en la página de Inicio pa
 
 #### (Modifiaciones)
 
-En la función anonima implementada en **tableElement**, se agrega la implementación del atributo **border** para el elemento html tipo tabla.
+En la función anonima implementada en **tableElement**, se agrega la implementación del atributo **border** para el elemento html tipo tabla. Ahora dicha función anonima retorna el elemento tipo tabla creado, lo cual permite la facibilidad de añadir la tabla a otros elementos del DOM.
+
+Las funciones anonimas almacenadas en **addHeaders** y **addContent** se encargan de crear y agregar a la tabla los elementos *thead* y *tbody* respectivamente.
 
 ### imports
 tables.mjs importa `th` y `td` de **dom-html-basic-elements.js**, que generan las celdas de encabezado y de datos.
 
 ### exports
 tables.mjs exporta:
-- **tableElement:** Crea la tabla con su `thead` (encabezado) y su `tbody` (cuerpo), con un borde, y la agrega al body.
+- **tableElement:** Crea la tabla con un borde, devuelve el elemento html de tipo tabla.
 - **addHeaders(elements):** Recibe una lista de textos y agrega una fila de encabezados a la tabla.
 - **addContent(data):** Recibe una lista de textos y agrega una fila de datos a la tabla.
 
@@ -212,3 +214,21 @@ nodes-styles.js exporta el objeto **STYLES**, con los siguientes estilos:
 
 Su función es ser un módulo de apoyo para el main.js. Guarda etiquetas de uso común en HTML tales como h1, h2, h3, etc. Al combinarlo con el método print de dom.js, se permite hacer combinaciones óptimas y funcionales que permiten escribir en HTML a través del main.
 Exporta las funciones `h1`, `h2`, `h3`, `p`, `i`, `s`,`th`, `td` . Cada una recibe un texto y devuelve la etiqueta HTML como texto, listo para usarse con `print`.
+
+### fetch.mjs
+
+Modulo para realizar peticiones asincronas hacia las apis del proyecto. Una función flecha almacenada en la constante **getData**, recibe la ruta del la api y devuelve un objeto **promise** con el JSON donde se almacenan los datos enviados por la api. Modulo proporcionado en clase.
+
+#### export
+
+El modulo fetch exporta la constante getData, la cual almacena la función anonima para realizar el fetch.
+
+# PHP
+
+## APIs
+
+## Service
+
+# Python
+
+## Service
