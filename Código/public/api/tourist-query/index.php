@@ -6,15 +6,16 @@
     @since 2026/11/22
 */
 
+    [
+        "getTourist" => $getTourist
+    ] = include __DIR__."/../../../service/php/tourist.php";
+
     header("Content-Type:application/json");
 
     $response = [
         'status' => 'success',
-        'message' => 'se envia respuesta del servidor',
-        'nombre' => 'nombre1',
-        'edad' => '20',
-        'dni' => '0801XXXXXXXXX',
-        'nacionalidad' => 'hondureño'
+        'message' => 'Enviando respuesta desde el servidor',
+        'data' => $getTourist()
     ];
 
     echo json_encode($response);

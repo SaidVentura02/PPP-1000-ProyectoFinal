@@ -1,7 +1,7 @@
 /* 
     @author jose.inestroza@unah.edu.hn ffloresh@unah.hn, said.ventura@unah.hn, iadiazr@unah.hn
-    @version 0.1.2
-    @date 2026/11/22
+    @version 0.1.3
+    @date 2026/11/24
     @since 2026/11/16
 */
 
@@ -43,18 +43,17 @@ leftCol.appendChild(touristsTitle);
 //Creación de la tabla turistas
 const tableTourists = tableElement();
 leftCol.appendChild(tableTourists);
+addHeaders(tableTourists, ["Nombre", "Edad", "DNI", "Nacionalidad", "Grupo"]);
 //Se realiza la peticion para obtener los datos de la tabla turista
-const request = async () =>{
-        const json = await getData("api/tourist-query/");
-        if(json.status){
-            let data = [json.nombre, json.edad, json.dni, json.nacionalidad];
-            addHeaders(tableTourists, ["Nombre", "Edad", "DNI", "Nacionalidad"]);
-            addContent(tableTourists, data);
+const requestTourist = async () =>{
+        let json = await getData("api/tourist-query/");
+        if(json.status){ 
+            let jsonArray = JSON.parse(json.data);
+            jsonArray.map((item) => addContent(tableTourists, [item.name, item.age, item.dni, item.country, item.group]));
         } else{
             console.log("ERROR");
         }
     }
-request();
 
 //Se genera las sección de guias
 leftCol.appendChild(guidesTitle);
@@ -62,7 +61,18 @@ leftCol.appendChild(guidesTitle);
 const tableGuides = tableElement();
 leftCol.appendChild(tableGuides);
 addHeaders(tableGuides, ["Nombre", "Grupo asignado"]);
-addContent(tableGuides, ["nombreEj", "grupo1"]);
+//Se realiza la peticion para obtener los datos de la tabla guia
+const requestGuide = async () =>{
+        let json = await getData("api/guide-query/");
+        if(json.status){ 
+            let jsonArray = JSON.parse(json.data);
+            jsonArray.map((item) => addContent(tableGuides, [item.name, item.group]));
+        } else{
+            console.log("ERROR");
+        }
+    }
+
+
 
 //Se genera las sección de destinos
 leftCol.appendChild(destinationsTitle);
@@ -70,7 +80,18 @@ leftCol.appendChild(destinationsTitle);
 const tableDestinations = tableElement();
 leftCol.appendChild(tableDestinations);
 addHeaders(tableDestinations, ["Destino", "Tipo"]);
-addContent(tableDestinations, ["nombreEj", "cultural"]);
+//Se realiza la peticion para obtener los datos de la tabla destino
+const requestDestination = async () =>{
+        let json = await getData("api/destination-query/");
+        if(json.status){ 
+            let jsonArray = JSON.parse(json.data);
+            jsonArray.map((item) => addContent(tableDestinations, [item.name, item.type]));
+        } else{
+            console.log("ERROR");
+        }
+    }
+
+
 
 //Definicion de elementos para la columna derecha
 //Guarda botones, dialogs y el boton de limpiar base de conocimientos
@@ -146,6 +167,10 @@ printAddingNodes(header);
 printAddingNodes(main);
 printAddingNodes(footer);
 
+
+requestTourist();
+requestGuide();
+requestDestination();
 
 
 
