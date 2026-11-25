@@ -8,6 +8,8 @@
 import { init, printAddingNodes } from "./modules/dom.js";
 import { createAnchor, createDialog, createElement, createHead } from "./modules/dom-html-elements.js";
 import { STYLES } from "./modules/nodes-styles.js"
+import { tableElement, addHeaders, addContent } from "./modules/tables.mjs";
+import { getData } from "./modules/fetch.mjs";
 
 init(STYLES.body);
 // Creacion de Head
@@ -27,6 +29,23 @@ header.appendChild(navHeader);
 const main = createElement("main");
 const mainTitle = createElement("h1", "Rutas turísticas");
 main.appendChild(mainTitle);
+//Se genera las sección de rutas
+//Creación de la tabla para rutas
+const tableRoutes = tableElement();
+main.appendChild(tableRoutes);
+addHeaders(tableRoutes, ["Grupo", "Guia", "Destino", "Transporte", "Llegada", "Salida"]);
+//Se realiza la peticion para obtener los datos de la tabla rutas
+const requestRoutes = async () =>{
+        let json = await getData("api/routes-query/");
+        if(json.status){ 
+            let jsonArray = JSON.parse(json.data);
+            jsonArray.map((item) => addContent(tableRoutes, [item.group, item.guide, item.destination, item.transportation, item.entry, item.leaving]));
+        } else{
+            console.log("ERROR");
+        }
+    }
+requestRoutes();
+
 
 //Definicion del Footer
 const footer = createElement("footer", "", STYLES.footer);

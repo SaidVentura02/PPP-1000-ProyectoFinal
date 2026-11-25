@@ -1,15 +1,30 @@
 /* 
     @author jose.inestroza@unah.edu.hn ffloresh@unah.hn, said.ventura@unah.hn, iadiazr@unah.hn
-    @version 0.1.3
-    @date 2026/11/24
+    @version 0.1.4
+    @date 2026/11/26
     @since 2026/11/16
 */
 
-import {init, printAddingNodes} from "./modules/dom.js";
+import {init, printAddingNodes } from "./modules/dom.js";
 import { createAnchor, createDialog, createElement, createHead } from "./modules/dom-html-elements.js"; 
 import {STYLES} from "./modules/nodes-styles.js";
 import { tableElement, addHeaders, addContent } from "./modules/tables.mjs";
 import { getData } from "./modules/fetch.mjs";
+
+
+//Se realiza la peticion para obtener las variables de entorno
+const requestEnv= async () =>{
+        let json = await getData("api/env/");
+        if(json.status){ 
+            let env = json.env;
+            let html = document.querySelector("html");
+            html.dataset.theme = env.theme;
+        } else{
+            console.log("ERROR");
+        }
+    }
+requestEnv();
+
 init(STYLES.body);
 
 //Creacion del Head: metadatos de la pagina
@@ -75,8 +90,6 @@ const requestGuide = async () =>{
         }
     }
 
-
-
 //Se genera las sección de destinos
 leftCol.appendChild(destinationsTitle);
 //Creacion de la tabla de destinos
@@ -93,8 +106,6 @@ const requestDestination = async () =>{
             console.log("ERROR");
         }
     }
-
-
 
 //Definicion de elementos para la columna derecha
 //Guarda botones, dialogs y el boton de limpiar base de conocimientos
@@ -171,10 +182,71 @@ printAddingNodes(header);
 printAddingNodes(main);
 printAddingNodes(footer);
 
-
+//Peticiones para llenado de tablas
 requestTourist();
 requestGuide();
 requestDestination();
+
+//
+//Peticiones asincronas para las estadisticas
+//
+const tableTouristOfGuide = tableElement();
+//addHeaders(tableTouristOfGuide,["Turista", "Guia"]);
+const requestTouristOfGuide = async () =>{
+        let json = await getData("api/tourist-of-guide-query/");
+        if(json.status){ 
+            let jsonArray = JSON.parse(json.data);
+            jsonArray.map((item) => addContent(tableTouristOfGuide, [item.name, item.guide]));
+        } else{
+            console.log("ERROR");
+        }
+    }
+//requestTouristOfGuide();
+
+
+const tableFrequentTourist = tableElement();
+//addHeaders(tableFrequentTourist,["Turista", "Guia"]);
+const requestFrequentTourist = async () =>{
+        let json = await getData("api/frequent-tourist-query/");
+        if(json.status){ 
+            let jsonArray = JSON.parse(json.data);
+            console.log(jsonArray)
+            //jsonArray.map((item) => addContent(tableFrequentTourist, [item.name, item.destination]));
+        } else{
+            console.log("ERROR");
+        }
+    }
+//requestFrequentTourist();
+
+
+const tableRelatedDestinations = tableElement();
+//addHeaders(tableFrequentTourist,["Turista", "Guia"]);
+const requestFRelatedDestinations = async () =>{
+        let json = await getData("api/related-destination-query/");
+        if(json.status){ 
+            let jsonArray = JSON.parse(json.data);
+            console.log(jsonArray)
+            //jsonArray.map((item) => addContent(tableRelatedDestinations [item.name, item.destination]));
+        } else{
+            console.log("ERROR");
+        }
+    }
+//requestRelatedDestinations();
+
+
+const tableTouristsDestinations = tableElement();
+//addHeaders(tableFrequentTourist,["Turista", "Guia"]);
+const requestTouristsDestinations = async () =>{
+        let json = await getData("api/tourists-destinations-query/");
+        if(json.status){ 
+            let jsonArray = JSON.parse(json.data);
+            console.log(jsonArray)
+            //jsonArray.map((item) => addContent(tableTouristsDestinations, [item.name, item.destination]));
+        } else{
+            console.log("ERROR");
+        }
+    }
+//requestTouristsDestinations();
 
 
 

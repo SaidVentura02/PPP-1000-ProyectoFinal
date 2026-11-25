@@ -6,7 +6,7 @@
 
 import sys
 
-keys = ["name", "dni", "destination"]
+keys = ["name", "destination"]
 
 read_data = lambda: str(sys.stdin.read()).strip().split("\n")
 process_item = lambda text: str(text).strip().split(",")

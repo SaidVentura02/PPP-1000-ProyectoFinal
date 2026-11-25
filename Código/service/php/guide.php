@@ -7,7 +7,7 @@
 */
 
 $pathDataModel = __DIR__."/../../data-model/data-model.pl";
-$pathPython = __DIR__."/../python/process-guide-data.py";
+$pathPython = __DIR__."/../python/proccess-guide-data.py";
 
 $fix = fn($text) => str_replace("'","\"",$text);
 
