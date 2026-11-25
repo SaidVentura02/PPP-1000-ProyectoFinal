@@ -11,7 +11,18 @@ import { STYLES } from "./modules/nodes-styles.js"
 import { tableElement, addHeaders, addContent } from "./modules/tables.mjs";
 import { getData } from "./modules/fetch.mjs";
 
-init(STYLES.body);
+//Se realiza la peticion para obtener las variables de entorno
+const requestEnv= async () =>{
+        let json = await getData("api/env/");
+        if(json.status){ 
+            let env = json.env;
+            init(STYLES.body, `${env.theme}`);
+        } else{
+            console.log("ERROR");
+        }
+    }
+requestEnv();
+
 // Creacion de Head
 const head = createHead("icon", "./assets/img/truck-fast-solid.png","image/png", "Rutas - Gestion de Rutas");
 

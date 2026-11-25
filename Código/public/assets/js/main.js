@@ -17,15 +17,13 @@ const requestEnv= async () =>{
         let json = await getData("api/env/");
         if(json.status){ 
             let env = json.env;
-            let html = document.querySelector("html");
-            html.dataset.theme = env.theme;
+            init(STYLES.body, `${env.theme}`);
         } else{
             console.log("ERROR");
         }
     }
-requestEnv();
 
-init(STYLES.body);
+requestEnv();
 
 //Creacion del Head: metadatos de la pagina
 const head = createHead("icon", "./assets/img/truck-fast-solid.png","image/png", "Inicio - Gestion de Rutas");

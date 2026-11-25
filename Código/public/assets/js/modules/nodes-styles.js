@@ -5,7 +5,10 @@
     @since 2026/11/19
 */
 
-import { html, theme, actualTheme } from "./dom.js"
+
+import { THEME_CONFIG } from "./theme-config.js"
+
+const actualTheme = THEME_CONFIG["light"];
 
 const STYLES = {
     body:{
