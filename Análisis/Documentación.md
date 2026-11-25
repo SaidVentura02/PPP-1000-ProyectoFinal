@@ -256,3 +256,49 @@ Programa dedicado a formatear el resultado de consultar a los turistas de un gu�
 ### process-frequent-tourist-data.py
 
 Formateo de output de comando swipl. Empleado para retornar todos los resultados de la consulta swipl, en un arreglo de objetos JSON. Mediante funciones lambda se limpia cada resultado de la consulta, y se trnasforma a formato de un objeto JSON.
+
+### process-tourists-of-guide-data.py
+
+Script que obtiene los turistas de un guía. Recibe en la primera línea el nombre del guía y en las siguientes líneas los turistas, separados por comas con el formato nombre,dni,guia. Devuelve únicamente los turistas cuyo guía coincide con el de la primera línea.
+
+#### imports
+process-tourists-of-guide-data.py importa:
+- *sys:* Se utiliza para leer los datos de la entrada estándar.
+
+#### Variables
+- *keys:* Lista con los nombres de los campos de cada turista: name, dni y guide.
+
+#### Funciones
+- *read_data():* Lee toda la entrada estándar, elimina los espacios sobrantes y devuelve una lista con una línea por elemento.
+- *process_item(text):* Recibe una línea de texto y la separa por comas. Devuelve una lista con los valores.
+- *process_data(items, keys):* Recibe una lista de líneas y la lista de claves. Por cada línea crea un diccionario que asocia cada clave con su valor.
+- *get_guide(lines):* Devuelve la primera línea, que es el nombre del guía a consultar.
+- *get_tourists(lines):* Devuelve todas las líneas excepto la primera, que son los turistas.
+- *tourists_of_guide(tourists, guide):* Filtra la lista de turistas y deja solo aquellos cuyo campo guide es igual al guía indicado.
+- *guide_tourists(lines):* Función orquestadora. Separa el guía de los turistas, convierte cada turista en un diccionario y filtra por el guía.
+
+El resultado se muestra con print. Todos los valores del diccionario se devuelven como texto.
+
+### process-frequent-tourists-data.py
+
+Script que obtiene los turistas más frecuentes de un destino. Recibe en la primera línea el nombre del destino y en las siguientes líneas las visitas, separadas por comas con el formato nombre,dni,destino. Cuenta cuántas veces visitó cada turista el destino indicado y devuelve los que más lo visitaron, ordenados de mayor a menor.
+
+#### imports
+process-frequent-tourists-data.py importa:
+- *sys:* Se utiliza para leer los datos de la entrada estándar.
+
+#### Funciones
+- *read_data():* Lee toda la entrada estándar, elimina los espacios sobrantes y devuelve una lista con una línea por elemento.
+- *process_item(text):* Recibe una línea de texto y la separa por comas. Devuelve una lista con los valores.
+- *get_destination(lines):* Devuelve la primera línea, que es el destino a consultar.
+- *get_visits(lines):* Devuelve todas las líneas excepto la primera, que son las visitas.
+- *tourists_of_destination(visits, destination):* Recorre las visitas y, por cada una que tenga al menos tres campos y cuyo destino coincida con el indicado, devuelve el texto nombre,dni del turista. Las visitas incompletas se ignoran.
+- *times(elements, element):* Cuenta cuántas veces aparece un elemento dentro de una lista.
+- *unique(elements):* Devuelve la lista sin elementos repetidos, conservando el orden en el que aparecieron por primera vez.
+- *count(elements):* Por cada turista distinto crea un diccionario con su name, su dni y la cantidad de visitas (count).
+- *rank(counts, i):* Calcula la posición que le corresponde al elemento i en el orden descendente. Cuenta cuántos elementos tienen más visitas que él, o las mismas pero aparecen antes.
+- *sort_desc(counts):* Ordena la lista de mayor a menor cantidad de visitas usando rank. En caso de empate se mantiene el orden de aparición.
+- *top(counts, amount):* Devuelve los primeros amount elementos de la lista.
+- *frequent_tourists(lines, amount):* Función orquestadora. Filtra las visitas del destino, cuenta las visitas de cada turista, ordena y toma los primeros amount.
+
+El resultado se muestra con print, llamando a frequent_tourists con una cantidad fija de 3 turistas. El campo count se devuelve como número.
