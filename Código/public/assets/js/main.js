@@ -5,14 +5,17 @@
     @since 2026/11/16
 */
 
-import {init, print, printAddingNodes} from "./modules/dom.js";
-import {h1, h2, p} from "./modules/dom-html-basic-elements.js";
-import { createAnchor, createDialog, createElement } from "./modules/dom-html-elements.js"; 
+import {init, printAddingNodes} from "./modules/dom.js";
+import { createAnchor, createDialog, createElement, createHead } from "./modules/dom-html-elements.js"; 
 import {STYLES} from "./modules/nodes-styles.js";
 import { tableElement, addHeaders, addContent } from "./modules/tables.mjs";
 import { getData } from "./modules/fetch.mjs";
-
 init(STYLES.body);
+
+//Creacion del Head: metadatos de la pagina
+const head = createHead("icon", "./assets/img/truck-fast-solid.png","image/png", "Inicio - Gestion de Rutas");
+
+
 //Creacion del header
 const header = createElement("header", "", STYLES.header);
 const navHeader = createElement("nav","", STYLES.nav);
@@ -163,6 +166,7 @@ footer.appendChild(navFooter);
 
 
 //Mostrar toda la pagina
+printAddingNodes(head);
 printAddingNodes(header);
 printAddingNodes(main);
 printAddingNodes(footer);

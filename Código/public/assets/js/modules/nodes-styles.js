@@ -1,7 +1,7 @@
 /* 
     @author ffloresh@unah.hn, said.ventura@unah.hn, iadiazr@unah.hn
-    @version 0.1.1
-    @date 2026/11/20
+    @version 0.1.2
+    @date 2026/11/24
     @since 2026/11/19
 */
 
@@ -42,7 +42,7 @@ const STYLES = {
     },
     main:{
         position: "relative",
-        height: "800px"
+        height: "1800px"
     },
     leftCol: {
         position: "absolute",

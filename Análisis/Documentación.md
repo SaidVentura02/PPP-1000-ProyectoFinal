@@ -1,8 +1,8 @@
 
 ```
     @author ffloresh@unah.hn, iadiazr@unah.hn said.ventura@unah.hn
-    @version 0.1.1
-    @date 2026/11/20
+    @version 0.1.2
+    @date 2026/11/24
     @since 2026/11/16
 ```
 
@@ -99,7 +99,7 @@ Es el documento principal del FrontEnd de la página principal. Su función es e
 ### Imports 
 main.js importa los siguientes módulos:
 - **dom.js:** Usa los métodos init para inicializar los estilos del sistema y printAddingNodes para agregar nodos HTML al sistema.
-- **dom-html-elements.js:** Toma los métodos createAnchor para crear elementos de tipo `<a>`, createDialog para crear elementos tipo modal dialog y createElement para crear elementos generales del sistema.
+- **dom-html-elements.js:** Toma los métodos createAnchor para crear elementos de tipo `<a>`, createDialog para crear elementos tipo modal dialog, createElement para crear elementos generales del sistema y createHead para crear el head que guarda metadatos de la aplicacion para aplicar titulos e iconos de las dos SPAs del proyecto.
 - **nodes-styles.js:** Importa todo el objeto `STYLES` que guarda los estilos de la aplicación.
 
 ### Footer y dialogs

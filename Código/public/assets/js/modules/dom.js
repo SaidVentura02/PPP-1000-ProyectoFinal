@@ -10,6 +10,7 @@ const changeBackgroundColor = color => document.body.style.backgroundColor = col
 const changeForegroundColor = color => document.body.style.color = color;
 const changeFont = font => document.body.style.fontFamily = font;
 const changeStyles = bodyStyles => Object.assign(body.style, bodyStyles);
+
 const html = document.querySelector("html");
 const theme = html.dataset.theme;
 const actualTheme = THEME_CONFIG[theme];

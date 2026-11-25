@@ -1,14 +1,17 @@
 /* 
     @author jose.inestroza@unah.edu.hn ffloresh@unah.hn, iadiazr@unah.hn
-    @version 0.1.1
-    @date 2026/11/20
+    @version 0.1.2
+    @date 2026/11/24
+    @since 2026/11/20
 */
 
 import { init, printAddingNodes } from "./modules/dom.js";
-import { createAnchor, createDialog, createElement } from "./modules/dom-html-elements.js";
+import { createAnchor, createDialog, createElement, createHead } from "./modules/dom-html-elements.js";
 import { STYLES } from "./modules/nodes-styles.js"
 
 init(STYLES.body);
+// Creacion de Head
+const head = createHead("icon", "./assets/img/truck-fast-solid.png","image/png", "Rutas - Gestion de Rutas");
 
 //Header
 const header = createElement("header", "", STYLES.header);
@@ -85,6 +88,7 @@ footer.appendChild(navFooter);
 
 
 //Mostrar toda la pagina
+printAddingNodes(head);
 printAddingNodes(header);
 printAddingNodes(main);
 printAddingNodes(footer);

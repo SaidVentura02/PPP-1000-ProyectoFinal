@@ -1,7 +1,7 @@
 /*
-    @author jose.inestroza@unah.edu.hn, fflores@unah.hn
-    @version 0.1.1
-    @date 2026/11/20
+    @author jose.inestroza@unah.edu.hn, fflores@unah.hn 
+    @version 0.1.2
+    @date 2026/11/24
     @since 2026/11/16
 */
 
@@ -36,16 +36,37 @@ const createDialog = (id, buttonContent, dialogContent, buttonStyle = {}, dialog
     return [openButton, dialog, closeButton]
 }
 
-const createTable = () => null;
-
 const createAnchor = (content, url, style = {}) => {
     const anchor = createElement("a", content, style);
     anchor.setAttribute("href", url);
     return anchor;
 }
 
+const createLink = (rel, href, type) => {
+    const link = createElement("link", "");
+    link.setAttribute("rel", rel);
+    link.setAttribute("href", href);
+    link.setAttribute("type", type);
+    return link;
+}
+
+const createDocumentTitle = (title) => {
+    const docTitle = createElement("title", title)
+    return docTitle;
+}
+
+const createHead = (rel, href, type, title) => {
+    const head = createElement("head", "");
+    const link = createLink(rel, href, type);
+    const docTitle = createDocumentTitle(title);
+    head.appendChild(link);
+    head.appendChild(docTitle);
+    return head;
+}
+
 export {
     createElement,
     createDialog,
-    createAnchor
+    createAnchor,
+    createHead
 };
