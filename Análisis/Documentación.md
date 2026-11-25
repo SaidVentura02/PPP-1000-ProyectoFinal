@@ -1,7 +1,7 @@
 
 ```
     @author ffloresh@unah.hn, iadiazr@unah.hn said.ventura@unah.hn
-    @version 0.1.2
+    @version 0.1.3
     @date 2026/11/24
     @since 2026/11/16
 ```
@@ -106,6 +106,10 @@ main.js importa los siguientes módulos:
 El footer de la página muestra tres botones: Autores, Ayuda y Acerca De. Cada botón abre un dialog (ventana modal) con su información.
 
 El contenido de cada dialog se crea afuera de `createDialog`, con `createElement`. Cada contenido es un `div` con un título (`h2`) y uno o varios párrafos (`p`). Los estilos de estos elementos se toman de `nodes-styles.js` (`dialogTitle` y `dialogText`). Luego, el contenido ya armado se le pasa a `createDialog`, junto con los estilos `buttonDialog` y `dialog`.`createDialog` devuelve también el botón de cerrar, así que main.js lo agrega a cada dialog con `appendChild`.
+
+#### (Modificaciones)
+
+Se implementa funciones flecha asíncronas para realizar las peticiones a las APIs. Para cada tabla, según su contenido, existe una función anónima especifica que realiza la petición a una API especializada.
 
 ## routes.js
 
@@ -227,8 +231,28 @@ El modulo fetch exporta la constante getData, la cual almacena la función anoni
 
 ## APIs
 
+### destination-query/index.php, guide-query/index.php, tourist-query/index.php
+
+Todos los archivos APIs contienen la misma estructura de código, por tanto, su funcionamiento es el mismo. Mediante *include* se importa la variable con la función anonima almacenada desde el respectivo programa en *service*, el retorno será un arreglo de objetos JSON almacenado en el response.
+
 ## Service
+
+### destination.php, guide.php, tourist.php
+
+Los programas **destination.php**, **guide.php** y **tourist** brindarán el servicio a nuestro proyecto. Mediante consultas de swipl hacia la terminal de comandos mediante el uso de shell_exec en una función anónima. Además de manejar las consultas hacia la base de conocimientos, también redirecciona el output hacia los programas de servicios de Python que se encargan del formato del output. Código enseñado en clase.
 
 # Python
 
 ## Service
+
+### process-destination-data.py, process-guide-data.py, process-tourist-data.py
+
+Los programas **process-destination-data.py**, **process-guide-data.py** y **process-tourist-data.py** También brindan servicio al proyecto al formatear el output de la función shell_exec. Mediante funciones lambda se realiza el formateo de manera que el resultado sea un arreglo de objetos json. Código enseñado en clase.
+
+### process-tourist-of-guide.py
+
+Programa dedicado a formatear el resultado de consultar a los turistas de un guía en especifico. De manera similar a los archivos antes mencionados, el programa recibe el output retornado de un comando swipl. Retorna un arreglo de todos los datos en formato de JSON.
+
+### process-frequent-tourist-data.py
+
+Formateo de output de comando swipl. Empleado para retornar todos los resultados de la consulta swipl, en un arreglo de objetos JSON. Mediante funciones lambda se limpia cada resultado de la consulta, y se trnasforma a formato de un objeto JSON.
