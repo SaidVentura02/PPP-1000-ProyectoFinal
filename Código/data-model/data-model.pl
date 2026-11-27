@@ -1,7 +1,7 @@
 /*
-* @author ffloresh@unah.hn, said.ventura@unah.hn
-* @version 0.2.2
-* @date 2026/11/20
+* @author ffloresh@unah.hn, said.ventura@unah.hn iadiazr@unah.hn
+* @version 0.2.3
+* @date 2026/11/26
 * @since 2026/11/14
 * Base de conocimientos para el proyecto
 */
@@ -74,3 +74,62 @@ horario(guia('Juan', grupo_1), '7:00 AM', '7:50 AM').
 horario(guia('Guadalupe', grupo_2), '8:00 AM', '8:50 AM').
 horario(guia('Rodrigo', grupo_3), '10:00 AM', '10:50 AM').
 horario(guia('Antonio', grupo_4), '11:00 AM', '11:50 AM').
+
+% Definición de franja de horario franja(numero_franja, hora_llegada, hora_salida)
+franja(1, '7:00 AM', '7:50 AM').
+franja(2, '8:00 AM', '8:50 AM').
+franja(3, '10:00 AM', '10:50 AM').
+franja(4, '11:00 AM', '11:50 AM').
+
+% Definicion de parada en un destino parada(numero_grupo, numero_franja, destino)
+parada(grupo_1, 1, 'Basilica de Suyapa').
+parada(grupo_1, 2, 'Cerro Juana Lainez').
+parada(grupo_1, 3, 'Parque Nacional El Picacho').
+parada(grupo_1, 4, 'Antigua Casa Presidencial').
+
+parada(grupo_2, 1, 'Cerro Juana Lainez').
+parada(grupo_2, 2, 'Parque Nacional El Picacho').
+parada(grupo_2, 3, 'Antigua Casa Presidencial').
+parada(grupo_2, 4, 'Basilica de Suyapa').
+
+parada(grupo_3, 1, 'Parque Nacional El Picacho').
+parada(grupo_3, 2, 'Antigua Casa Presidencial').
+parada(grupo_3, 3, 'Basilica de Suyapa').
+parada(grupo_3, 4, 'Cerro Juana Lainez').
+
+parada(grupo_4, 1, 'Antigua Casa Presidencial').
+parada(grupo_4, 2, 'Basilica de Suyapa').
+parada(grupo_4, 3, 'Cerro Juana Lainez').
+parada(grupo_4, 4, 'Parque Nacional el Picacho').
+
+% Definicion de asignar un transporte a un grupo
+transporte_grupo(grupo_1, 'bus pequeño').
+transporte_grupo(grupo_2, 'bus pequeño').
+transporte_grupo(grupo_3, 'bus grande').
+transporte_grupo(grupo_4, camioneta).
+
+% Definicion de choque
+% Dos grupos chocan si estan en el mismo destino en la misma franja 
+choque(Franja, Destino, Grupo1, Grupo2):-
+    parada(Grupo1, Franja, Destino),
+    parada(Grupo2, Franja, Destino),
+    Grupo1 \= Grupo2.
+
+% Itinerario completo ruta(grupo, guia, franja, destino, transporte, llegada, salida)
+ruta(Grupo, Guia, Franja, Destino, Transporte, Llegada, Salida):-
+    parada(Grupo, Franja, Destino),
+    franja(Franja, Llegada, Salida),
+    guia(Guia, Grupo),
+    transporte_grupo(Grupo, Transporte).
+    
+
+
+
+
+
+
+
+
+
+
+
