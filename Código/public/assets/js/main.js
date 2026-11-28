@@ -108,9 +108,82 @@ const requestDestination = async () =>{
 //Definicion de elementos para la columna derecha
 //Guarda botones, dialogs y el boton de limpiar base de conocimientos
 const optionsTitle = createElement("h1", "Opciones");
-const cleanDataButton = createElement("button", "Limpiar Base de Conocimientos", STYLES.cleanButton);
 rightCol.appendChild(optionsTitle);
-rightCol.appendChild(cleanDataButton);
+
+//Pila de Botones
+const cleanData = createElement("div", "", STYLES.divButtonDialog);
+const frequentTourist = createElement("div", "", STYLES.divButtonDialog);
+const touristsOfGuide = createElement("div", "", STYLES.divButtonDialog);
+const relatedDestinations = createElement("div", "", STYLES.divButtonDialog);
+const touristsDestinations = createElement("div", "", STYLES.divButtonDialog);
+
+const cleanDataButton = createElement("button", "Limpiar Base de Conocimientos", STYLES.cleanButton);
+cleanData.appendChild(cleanDataButton);
+
+//Definicion de Dialogs de opciones y estadisticas
+
+//Turistas mas frecuentes a un destino
+const [frequentTouristButton, frequentTouristDialog, frequentTouristButtonClose] = createDialog(
+    "frequentTourist", 
+    "Ver Turistas por Frecuencia a Destino",
+    createElement("h1", "Turistas por Frecuencia"), //Contenido del Dialog
+    STYLES.button,
+    STYLES.dialog,
+    STYLES.button 
+);
+
+frequentTourist.appendChild(frequentTouristButton);
+frequentTourist.appendChild(frequentTouristDialog);
+frequentTouristDialog.appendChild(frequentTouristButtonClose);
+
+//Turistas de un guia
+const [touristsOfGuideButton, touristsOfGuideDialog, touristsOfGuideButtonClose] = createDialog(
+    "touristsOfGuide", 
+    "Ver Turistas por Guia",
+    createElement("h1", "Turistas por Guia"), //Contenido del Dialog
+    STYLES.button,
+    STYLES.dialog,
+    STYLES.button 
+);
+
+touristsOfGuide.appendChild(touristsOfGuideButton);
+touristsOfGuide.appendChild(touristsOfGuideDialog);
+touristsOfGuideDialog.appendChild(touristsOfGuideButtonClose);
+
+//Destinos relacionados (por tipo de destino)
+const [relatedDestinationsButton, relatedDestinationsDialog, relatedDestinationsButtonClose] = createDialog(
+    "relatedDestinations", 
+    "Ver Destinos Relacionados",
+    createElement("h1", "Destinos relacionados"), //Contenido del Dialog
+    STYLES.button,
+    STYLES.dialog,
+    STYLES.button 
+);
+
+relatedDestinations.appendChild(relatedDestinationsButton);
+relatedDestinations.appendChild(relatedDestinationsDialog);
+relatedDestinationsDialog.appendChild(relatedDestinationsButtonClose);
+
+//Destinos de un turista
+const [touristsDestinationsButton, touristsDestinationsDialog, touristsDestinationsButtonClose] = createDialog(
+    "touristsDestinations", 
+    "Ver Destinos Relacionados",
+    createElement("h1", "Destinos relacionados"), //Contenido del Dialog
+    STYLES.button,
+    STYLES.dialog,
+    STYLES.button 
+);
+
+touristsDestinations.appendChild(touristsDestinationsButton);
+touristsDestinations.appendChild(touristsDestinationsDialog);
+touristsDestinationsDialog.appendChild(touristsDestinationsButtonClose);
+
+rightCol.appendChild(cleanData);
+rightCol.appendChild(frequentTourist);
+rightCol.appendChild(touristsOfGuide);
+rightCol.appendChild(relatedDestinations);
+rightCol.appendChild(touristsDestinations);
+
 
 main.appendChild(leftCol);
 main.appendChild(rightCol);

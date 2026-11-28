@@ -68,7 +68,8 @@ const STYLES = {
         color: actualTheme["background-color"],
         border: "none",
         cursor: "pointer",
-        borderRadius: "12px"
+        borderRadius: "12px",
+        marginBottom: "16px"
     },
     button:{
         padding: "8px",
@@ -77,7 +78,8 @@ const STYLES = {
         color: actualTheme["background-color"],
         border: "none",
         cursor: "pointer",
-        borderRadius: "12px"
+        borderRadius: "12px",
+        marginBottom: "12px"
     },
     buttonDialogFooter: {
         marginLeft: "16px",
@@ -107,7 +109,6 @@ const STYLES = {
         fontSize: "16px",
         lineHeight: "1.6"
     }
-    
 }
 
 export {
